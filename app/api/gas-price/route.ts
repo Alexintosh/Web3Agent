@@ -23,7 +23,6 @@ export async function GET(request: Request) {
         }
         return NextResponse.json({ message: 'Here is gas fee for Ethereum!', data: responsePayload, }, { status: 200 });
     } catch (error: any) {
-        console.log(error.message)
         const message = error.message || 'We ran into a problem Try again in a few minutes!';
         return NextResponse.json({ message, data: error }, { status: 500 });
 

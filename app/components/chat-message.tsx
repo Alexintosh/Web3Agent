@@ -22,7 +22,6 @@ export function ChatMessage({ message, ...props }: ChatMessageProps) {
 
   const onExpandClick = () => setIsExpanded(!isExpanded);
   if (message.function_call && !isExpanded) {
-    console.log('themessage ===========>>>>>>>>>>>>>>>', message.function_call)
     return (
       <div
         className="group relative mb-4 flex items-start md:-ml-12"

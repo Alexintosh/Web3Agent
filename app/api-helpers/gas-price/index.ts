@@ -15,7 +15,6 @@ export const rpcGetGasFee = async (chainId: number) => {
         method: "eth_gasPrice",
         params: [],
     });
-    console.log("response.data.result=>", response.data.result)
     return response;
 
 };
