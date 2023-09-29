@@ -7,8 +7,6 @@ import { options } from "@/app/api/auth/[...nextauth]/options"
 import { getServerSession } from "next-auth/next"
 import { nanoid } from '@/app/lib/utils'
 
-// export const runtime = 'edge'
-
 export async function POST(req: Request) {
   try {
 
@@ -16,8 +14,6 @@ export async function POST(req: Request) {
     const json = await req.json()
     const { messages, functions, function_call } = json
     const { user } = await getServerSession(options) as any
-    console.log("DATAT- > ", user)
-    // const userId = (await getServerSession(options) as any)?.user.id
 
     if (!user || !user?.email) {
       return new Response('Unauthorized', { status: 401 })
@@ -70,7 +66,6 @@ export async function POST(req: Request) {
 
     return new StreamingTextResponse(stream)
   } catch (error) {
-    console.log({ error })
     return new Response('Unauthorized', { status: 401 })
   }
 }

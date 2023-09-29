@@ -14,7 +14,6 @@ export const rpcGetBlockNumber = async (chainId: number) => {
         method: "eth_blockNumber",
         params: [],
     });
-    console.log("response.data.result=>", response.data.result)
     return response;
 
 };

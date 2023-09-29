@@ -12,21 +12,17 @@ import { type Chat } from '@/app/lib/types'
 // Store a new user's details
 export async function storeUser(user: { id: string } & Record<string, any>) {
   // Assuming user has an 'id' field
-  console.log("----------------- storeUser START -------------------", user)
   const userKey = `user:details:${user.email}`;
-  console.log(user.email, "<<<<<<<<<<<<<<<<<<<<<<<===================== User email");
 
   // Save user details
   await kv.hmset(userKey, user);
 
   // Add user's ID to the list of all users
   await kv.sadd('users:list', user.email);
-  console.log("----------------- storeUser END -------------------")
 
 }
 //NOTE: USER ID will be email
 export async function getChats(userId?: string | null) {
-  console.log("----------------userId=> getChats", userId)
   if (!userId) {
     return []
   }
@@ -50,8 +46,6 @@ export async function getChats(userId?: string | null) {
 }
 
 export async function getChat(id: string, userId: string) {
-  console.log("userId=> ", userId)
-  console.log("id=> ", id)
   const chat = await kv.hgetall<Chat>(`chat:${id}`)
 
   if (!chat || (userId && chat.userId !== userId)) {
@@ -72,7 +66,6 @@ export async function removeChat({ id, path }: { id: string; path: string }) {
 
   // const uid = await kv.hget<string>(`chat:${id}`, 'userId')
   const uid = await kv.hget<string>(`chat:${id}`, 'userId')
-  console.log({ uid, session: session })
   if (uid !== session?.user?.email) {
     return {
       error: 'Unauthorized'
