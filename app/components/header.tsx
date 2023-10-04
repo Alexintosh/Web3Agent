@@ -27,31 +27,23 @@ export async function Header() {
       <div className="flex items-center gap-4">
         {session?.user ? (
           <>
-          <Sidebar>
-            <React.Suspense fallback={<div className="flex-1 overflow-auto" />}>
-              {/* @ts-ignore */}
-              <SidebarList userId={session?.user?.email} />
-            </React.Suspense>
-            <SidebarFooter>
-              <ThemeToggle />
-              <ClearHistory clearChats={clearChats} />
-            </SidebarFooter>
-          </Sidebar>
+            <Sidebar>
+              <React.Suspense fallback={<div className="flex-1 overflow-auto" />}>
+                {/* @ts-ignore */}
+                <SidebarList userId={session?.user?.email} />
+              </React.Suspense>
+              <SidebarFooter>
+                <ThemeToggle />
+                <ClearHistory clearChats={clearChats} />
+              </SidebarFooter>
+            </Sidebar>
             <Link href={'/defi-prompt'} className='text-green-600 font-semibold'>
               Defi Prompt
             </Link>
           </>
         ) : (
-          <Link href="/" target="_blank" rel="nofollow">
-            {/* <IconNextChat className="mr-2 h-6 w-6 dark:hidden" inverted />
-            <IconNextChat className="mr-2 hidden h-6 w-6 dark:block" /> */}
+          <Link href="/">
             <div style={{ display: "flex" }}>
-              <img
-                style={{ cursor: 'pointer' }}
-                width={'20px'}
-                height={'15px'}
-                src="https://i.imgur.com/9wk3mGf.png"
-              ></img>
               <img
                 width={'130px'}
                 style={{ cursor: 'pointer' }}
@@ -61,34 +53,9 @@ export async function Header() {
 
           </Link>
         )}
-
-        {/* <div className="flex items-center">
-          <IconSeparator className="h-6 w-6 text-muted-foreground/50" />
-          {session?.user ? (
-            <UserMenu user={session.user} />
-          ) : (
-            <LoginButton
-            
-              showGithubIcon={true}
-              text="Login"
-              className="-ml-2"
-              />
-              
-          )}
-        </div> */}
       </div>
       <div className="flex items-center justify-end space-x-2">
-        {/* <a
-          target="_blank"
-          href="https://github.com/noplacetohide/chatgpt-plugins"
-          rel="noopener noreferrer"
-          className={cn(buttonVariants({ variant: 'outline' }))}
-        >
-          <IconGitHub />
-          <span className="ml-2 hidden md:flex">GitHub</span>
-        </a> */}
         <div className="flex items-center">
-          {/* <IconSeparator className="h-6 w-6 text-muted-foreground/50" /> */}
           {session?.user ? (
             <UserMenu user={session.user} />
           ) : (
