@@ -3,6 +3,7 @@
 import { ChatRequest, FunctionCallHandler } from "ai";
 import { useChat, type Message } from "ai/react";
 import toast from 'react-hot-toast'
+import { useSession } from 'next-auth/react'
 
 import { cn } from '@/app/lib/utils'
 import { ChatList } from '@/app/components/chat-list'
@@ -14,6 +15,8 @@ import { functionSchemas } from "@/app/lib/functions/schemas";
 import { useEffect, useState } from "react";
 import { createPublicClient, http } from "viem";
 import { VerifyContractParams } from "@/app/lib/functions/types";
+import LoginErrorMsg from "./LoginErrorMsg";
+import React from "react";
 
 export interface ChatProps extends React.ComponentProps<'div'> {
   initialMessages?: Message[]
@@ -360,6 +363,17 @@ export function Chat({ id, initialMessages, className }: ChatProps) {
         }
       }
     })
+  const { data: session } = useSession()
+  if (!session) {
+    return <LoginErrorMsg
+      classname="flex flex-col justify-center items-center h-[calc(100vh-120px)]"
+      title="Login Requires!"
+      titleClassName="text-2xl font-bold my-2 text-green-600"
+      subTitle="Please Login to Access Propmt!"
+      subTitleClassName="text-lg font-bold my-2 text-green-500"
+    />
+  }
+
   return (
     <>
       <div className={cn('pb-[200px] pt-4 md:pt-10', className)}>
