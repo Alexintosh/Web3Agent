@@ -92,7 +92,7 @@ export default function Example() {
               <label>Just describe your request and I'll do the magic.
 
               </label>
-            <textarea className='w-full border border-input bg-white text-primary border-emerald-600 shadow-md' ></textarea>
+            <textarea placeholder='Just describe your request and I will do the magic.' className='w-full p-5 h-52 mt-7 border-green-800 focus:border-green-700 border-input bg-white text-primary border-emerald-600 shadow-md' ></textarea>
             <Button variant="default" className='w-full mt-5 h-12'> Send Request</Button>
 
             </Tab.Panel>
