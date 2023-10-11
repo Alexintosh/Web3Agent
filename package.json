@@ -28,6 +28,9 @@
     "@types/react": "18.2.22",
     "@types/react-dom": "18.2.7",
     "@vercel/kv": "^0.2.3",
+    "@web3auth/base": "^7.0.4",
+    "@web3auth/modal": "^7.0.4",
+    "@web3auth/torus-wallet-connector-plugin": "^7.0.4",
     "ai": "^2.2.13",
     "autoprefixer": "10.4.16",
     "axios": "^1.5.1",
@@ -36,6 +39,7 @@
     "class-variance-authority": "^0.7.0",
     "eslint": "8.50.0",
     "eslint-config-next": "13.5.2",
+    "ethers": "^6.8.0",
     "fastest-levenshtein": "^1.0.16",
     "nanoid": "^5.0.1",
     "next": "13.5.2",
@@ -60,7 +64,8 @@
     "tailwindcss-animate": "^1.0.7",
     "typescript": "5.2.2",
     "utf-8-validate": "^6.0.3",
-    "viem": "^1.12.2"
+    "viem": "^1.12.2",
+    "web3": "^4.1.2"
   },
   "devDependencies": {
     "@types/react-syntax-highlighter": "^15.5.7"
