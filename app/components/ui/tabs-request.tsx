@@ -3,9 +3,17 @@ import { Tab } from '@headlessui/react'
 import { Button } from '@/app/components/ui/button'
 
 
+interface TemplateProps {
+  text: string;
+  use: (message: string) => void;
+}
+
+
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
+
+
 
 export default function Example() {
   let [categories] = useState({
@@ -20,39 +28,29 @@ export default function Example() {
       {
         id: 2,
         title: "Create portfolio with 0.1 WETH and trigger stop loss on -5% and take profit on 10%.",
-        date: '2h ago',
-        commentCount: 3,
-        shareCount: 2,
+       
       },
       {
         id: 2,
         title: "Create portfolio with 0.1 WETH and trigger stop loss on -5% and take profit on 10%.",
-        date: '2h ago',
-        commentCount: 3,
-        shareCount: 2,
+      
       },
       {
         id: 2,
         title: "Create portfolio with 0.1 WETH and trigger stop loss on -5% and take profit on 10%.",
-        date: '2h ago',
-        commentCount: 3,
-        shareCount: 2,
+       
       },
      
     ],Templetes: [
       {
         id: 1,
         title: 'Does drinking coffee make you smarter?',
-        date: '5h ago',
-        commentCount: 5,
-        shareCount: 2,
+     
       },
       {
         id: 2,
         title: "So you've bought coffee... now what?",
-        date: '2h ago',
-        commentCount: 3,
-        shareCount: 2,
+      
       },
     ],
     
@@ -89,9 +87,9 @@ export default function Example() {
                 'ring-white ring-opacity-60 ring-offset-2 ring-offset-green-400 focus:outline-none focus:ring-2'
               )}
           >
-              <label>Just describe your request and I'll do the magic.
+              {/* <label>Just describe your request and I'll do the magic.
 
-              </label>
+              </label> */}
             <textarea placeholder='Just describe your request and I will do the magic.' className='w-full p-5 h-52 mt-7 border-green-800 focus:border-green-700 border-input bg-white text-primary border-emerald-600 shadow-md' ></textarea>
             <Button variant="default" className='w-full mt-5 h-12'> Send Request</Button>
 
@@ -133,7 +131,7 @@ export default function Example() {
                       )}
                     />
 
-                    <Button variant="default" className='mt-2'> Use</Button>
+                    <Button onClick={() => use(post.title)} variant="default" className='mt-2'> Use</Button>
                   </li>
                 ))}
               </ul>
