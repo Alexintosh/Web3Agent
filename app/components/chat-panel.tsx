@@ -4,6 +4,7 @@ import { ButtonScrollToBottom } from '@/app/components/button-scroll-to-bottom'
 import { IconRefresh, IconStop } from '@/app/components/ui/icons'
 import { UseChatHelpers } from "ai/react";
 import { functionSchemas } from '@/app/lib/functions/schemas'
+import { Tabs } from '@radix-ui/react-tabs';
 
 export interface ChatPanelProps
   extends Pick<
@@ -44,7 +45,9 @@ export function ChatPanel({
               Stop generating
             </Button>
           ) : (
-            messages?.length > 0 && (
+              messages?.length > 0 && (
+                
+               
               <Button
                 variant="outline"
                 onClick={() => reload()}
