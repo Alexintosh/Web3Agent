@@ -3,6 +3,7 @@
 
 import React from 'react';
 import TabsRequest  from '../components/ui/tabs-request'; // Import the Tabs component without curly braces
+import { DefiPromptForm } from '../components/defi-prompt-form';
 
 
 export default function Page() {
@@ -11,16 +12,25 @@ export default function Page() {
 
     return (
       <>
-            <div className="rounded-lg border bg-background shadow-md">
-
-        <div style={{display:"flex", flexDirection:"column", alignItems:"center",  padding:"20px", border:"10px",borderColor:"green", borderRadius:"10px"}} className='card rounded-none'>
-                    {/* <h1 style={ { fontSize: "28px", fontWeight: "bold", marginTop: "5px" } } >Magic space</h1>  */}
-                            <h1 className=" text-emerald-700 text-center text-3xl font-black">Magic space</h1> 
-
-            <TabsRequest />
+            
+        <div className="fixed inset-x-0 bottom-0 bg-gradient-to-b from-muted/10 from-10% to-muted/30 to-50%">
+                <div className="mx-auto sm:max-w-2xl sm:px-4">
+                    <div className="space-y-4 border-t bg-background px-4 py-2 shadow-lg sm:rounded-t-xl sm:border md:py-4">
+                            <DefiPromptForm
+                                onSubmit={async value => {
+                                await append({
+                                    
+                                    content: value,
+                                    role: 'user'
+                                },
+                                    { functions: functionSchemas })
+                                }}
+                            
+                            />
+                    </div>
+                </div>
         </div>
-        
-</div>
+
       </>
   );
 }
