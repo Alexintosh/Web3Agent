@@ -1,12 +1,12 @@
 import Link from "next/link"
-import { getServerSession } from "next-auth/next"
-import { options } from "../api/auth/[...nextauth]/options"
+// import { getServerSession } from "next-auth/next"
+// import { options } from "../api/auth/[...nextauth]/options"
 
 export default async function Navbar() {
-    const session = await getServerSession(options)
+    const session: any = {}//await getServerSession(options)
     console.log({ session })
     return (
-        <nav className="bg-blue-800 p-4">
+        <nav className="bg-blue-800 p-4" >
             <ul className="flex justify-evenly text-2xl font-bold">
                 <li><Link href="/">Home</Link></li>
                 {
@@ -19,6 +19,6 @@ export default async function Navbar() {
                 <li><Link href="/client">Client</Link></li>
                 <li><Link href="/extra">Extra</Link></li>
             </ul>
-        </nav>
+        </nav >
     )
 }

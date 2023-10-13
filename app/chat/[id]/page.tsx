@@ -3,8 +3,8 @@ import { notFound, redirect } from 'next/navigation'
 // import { auth } from '@/auth'
 import { getChat } from '@/app/actions'
 import { Chat } from '@/app/components/chat'
-import { options } from '@/app/api/auth/[...nextauth]/options'
-import { getServerSession } from 'next-auth'
+// import { options } from '@/app/api/auth/[...nextauth]/options'
+// import { getServerSession } from 'next-auth'
 
 // export const runtime = 'edge'
 export const preferredRegion = 'home'
@@ -19,7 +19,7 @@ export async function generateMetadata({
     params
 }: ChatPageProps): Promise<Metadata> {
     // const session = await auth()
-    const session: any = await getServerSession(options)
+    const session: any = {} //await getServerSession(options)
     if (!session?.user) {
         return {}
     }

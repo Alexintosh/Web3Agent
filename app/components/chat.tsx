@@ -364,7 +364,7 @@ export function Chat({ id, initialMessages, className }: ChatProps) {
         }
       }
     })
-  const { data: session } = useSession()
+  const session: any = {}//useSession()
   if (!session) {
     return <WebAuth />
     // <LoginErrorMsg

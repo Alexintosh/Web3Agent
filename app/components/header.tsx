@@ -30,8 +30,8 @@ import Link from 'next/link'
 
 import { cn } from '@/app/lib/utils'
 // import { auth } from '@/auth'
-import { options } from "../api/auth/[...nextauth]/options"
-import { getServerSession } from "next-auth/next"
+// import { options } from "../api/auth/[...nextauth]/options"
+// import { getServerSession } from "next-auth/next"
 import { clearChats } from '@/app/actions'
 import { buttonVariants } from '@/app/components/ui/button'
 import { Sidebar } from '@/app/components/sidebar'
@@ -49,13 +49,14 @@ import { LoginButton } from '@/app/components/login-button'
 import { useSession } from 'next-auth/react'
 import { redirect } from 'next/navigation'
 export function Header() {
+  const session: any = {}
   // const session: any = await getServerSession(options)
-  const { data: session } = useSession({
-    required: true,
-    onUnauthenticated() {
-      redirect('/api/auth/signin?callbackUrl=/client')
-    }
-  })
+  // const { data: session } = useSession({
+  //   required: true,
+  //   onUnauthenticated() {
+  //     redirect('/api/auth/signin?callbackUrl=/client')
+  //   }
+  // })
   const [web3auth, setWeb3auth] = React.useState<Web3Auth | null>(null);
   const [torusPlugin, setTorusPlugin] = React.useState<TorusWalletConnectorPlugin | null>(null);
   const [provider, setProvider] = React.useState<IProvider | null>(null);

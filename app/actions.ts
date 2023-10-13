@@ -5,8 +5,8 @@ import { redirect } from 'next/navigation'
 import { kv } from '@vercel/kv'
 
 // import { auth } from '@/auth'
-import { options } from "./api/auth/[...nextauth]/options"
-import { getServerSession } from "next-auth/next"
+// import { options } from "./api/auth/[...nextauth]/options"
+// import { getServerSession } from "next-auth/next"
 import { type Chat } from '@/app/lib/types'
 
 // Store a new user's details
@@ -56,7 +56,7 @@ export async function getChat(id: string, userId: string) {
 }
 
 export async function removeChat({ id, path }: { id: string; path: string }) {
-  const session: any = await getServerSession(options)
+  const session: any = {}//await getServerSession(options)
 
   if (!session) {
     return {
@@ -80,7 +80,7 @@ export async function removeChat({ id, path }: { id: string; path: string }) {
 }
 
 export async function clearChats() {
-  const session: any = await getServerSession(options)
+  const session: any = {} //await getServerSession(options)
 
   if (!session?.user?.email) {
     return {
@@ -116,7 +116,7 @@ export async function getSharedChat(id: string) {
 }
 
 export async function shareChat(chat: Chat) {
-  const session: any = await getServerSession(options)
+  const session: any = {}// await getServerSession(options)
 
   if (!session?.user?.email || session.user.email !== chat.userId) {
     return {
