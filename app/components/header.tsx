@@ -50,12 +50,12 @@ import { useSession } from 'next-auth/react'
 import { redirect } from 'next/navigation'
 export function Header() {
   // const session: any = await getServerSession(options)
-  const { data: session } = useSession({
-    required: true,
-    onUnauthenticated() {
-      redirect('/api/auth/signin?callbackUrl=/client')
-    }
-  })
+  // const { data: session } = useSession({
+  //   required: true,
+  //   onUnauthenticated() {
+  //     redirect('/api/auth/signin?callbackUrl=/client')
+  //   }
+  // })
   const [web3auth, setWeb3auth] = React.useState<Web3Auth | null>(null);
   const [torusPlugin, setTorusPlugin] = React.useState<TorusWalletConnectorPlugin | null>(null);
   const [provider, setProvider] = React.useState<IProvider | null>(null);
