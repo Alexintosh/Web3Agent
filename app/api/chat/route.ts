@@ -3,8 +3,8 @@ import { Configuration, OpenAIApi } from 'openai-edge'
 import { Message, OpenAIStream, StreamingTextResponse } from "ai";
 import { configs } from '@/configs'
 // import { auth } from '@/auth'
-import { options } from "@/app/api/auth/[...nextauth]/options"
-import { getServerSession } from "next-auth/next"
+// import { options } from "@/app/api/auth/[...nextauth]/options"
+// import { getServerSession } from "next-auth/next"
 import { nanoid } from '@/app/lib/utils'
 
 export async function POST(req: Request) {
@@ -13,12 +13,12 @@ export async function POST(req: Request) {
 
     const json = await req.json()
     const { messages, functions, function_call } = json
-    const { user } = await getServerSession(options) as any
+    const { user }: any = { user: {} }//await getServerSession(options) as any
 
-    if (!user || !user?.email) {
-      return new Response('Unauthorized', { status: 401 })
-    }
-    const userId = user?.email;
+    // if (!user || !user?.email) {
+    //   return new Response('Unauthorized', { status: 401 })
+    // }
+    const userId = 'DEV_TEST'//user?.email;
 
     const configuration = new Configuration({
       apiKey: configs.OPENAI_API_KEY
