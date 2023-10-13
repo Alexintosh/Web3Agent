@@ -48,6 +48,46 @@ import { UserMenu } from '@/app/components/user-menu'
 import { LoginButton } from '@/app/components/login-button'
 import { useSession } from 'next-auth/react'
 import { redirect } from 'next/navigation'
+import { Balance } from "./balance";
+import { NetworkSwitcher } from "./switchNetwork";
+import { useAccount, useConnect, useDisconnect } from "wagmi";
+
+
+
+function Profile() {
+  const { address, connector, isConnected } = useAccount();
+  const { connect, connectors, error } = useConnect();
+  const { disconnect } = useDisconnect();
+
+  if (isConnected) {
+    return (
+      <div className="main">
+        <div className="title">Connected to {connector?.name}</div>
+        <div>{address}</div>
+        <button className="card" onClick={disconnect as any}>
+          Disconnect
+        </button>
+        <Balance />
+        <NetworkSwitcher />
+      </div>
+    );
+  } else {
+    return (
+      <div className="main">
+        {connectors.map((connector) => {
+          return (
+            <button className="w-32 border rounded-sm hover:bg-green-600 hover:text-white text-green-600 font-semibold p-1" key={connector.id} onClick={() => connect({ connector })}>
+              {connector.name}
+            </button>
+          );
+        })}
+        {error && <div>{error.message}</div>}
+      </div>
+    );
+  }
+}
+
+
 export function Header() {
   // const session: any = await getServerSession(options)
   // const { data: session } = useSession({
@@ -465,7 +505,9 @@ export function Header() {
       </div>
 
     </header>
-      {/* <div className="flex m-4">{loggedIn ? loggedInView : unloggedInView}</div>*/}
+      {/* <div className="flex m-4">{loggedIn ? loggedInView : unloggedInView}</div>*/ }
+                        <Profile />
+
     </>
 
   )

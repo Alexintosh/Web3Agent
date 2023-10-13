@@ -110,7 +110,7 @@ export default function RootLayout({
               {/* <Navbar /> */ }
 
                 <Header />
-                  <Profile />
+                  {/* <Profile /> */}
                   <main className="flex justify-center items-start p-6 min-h-screen">
                     {children}
                   </main>
