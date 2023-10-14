@@ -366,14 +366,13 @@ export function Chat({ id, initialMessages, className }: ChatProps) {
     })
   const session: any = {}//useSession()
   if (!session) {
-    return <WebAuth />
-    // <LoginErrorMsg
-    //   classname="flex flex-col justify-center items-center h-[calc(100vh-120px)]"
-    //   title="Login Requires!"
-    //   titleClassName="text-2xl font-bold my-2 text-green-600"
-    //   subTitle="Please Login to Access Propmt!"
-    //   subTitleClassName="text-lg font-bold my-2 text-green-500"
-    // />
+    return <LoginErrorMsg
+      classname="flex flex-col justify-center items-center h-[calc(100vh-120px)]"
+      title="Login Requires!"
+      titleClassName="text-2xl font-bold my-2 text-green-600"
+      subTitle="Please Login to Access Propmt!"
+      subTitleClassName="text-lg font-bold my-2 text-green-500"
+    />
   }
 
   return (

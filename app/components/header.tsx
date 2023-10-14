@@ -48,384 +48,26 @@ import { UserMenu } from '@/app/components/user-menu'
 import { LoginButton } from '@/app/components/login-button'
 import { useSession } from 'next-auth/react'
 import { redirect } from 'next/navigation'
+import { Balance } from "./balance";
+import { NetworkSwitcher } from "./switchNetwork";
+import { useAccount, useConnect, useDisconnect } from "wagmi";
+
+
+
 export function Header() {
-  const session: any = {}
-  // const session: any = await getServerSession(options)
-  // const { data: session } = useSession({
-  //   required: true,
-  //   onUnauthenticated() {
-  //     redirect('/api/auth/signin?callbackUrl=/client')
-  //   }
-  // })
-  const [web3auth, setWeb3auth] = React.useState<Web3Auth | null>(null);
-  const [torusPlugin, setTorusPlugin] = React.useState<TorusWalletConnectorPlugin | null>(null);
-  const [provider, setProvider] = React.useState<IProvider | null>(null);
-  const [loggedIn, setLoggedIn] = React.useState(false);
-  useEffect(() => {
-    const init = async () => {
-      try {
-        const web3auth = new Web3Auth({
-          clientId,
-          chainConfig: {
-            chainNamespace: CHAIN_NAMESPACES.EIP155,
-            chainId: "0x1",
-            rpcTarget: "https://rpc.ankr.com/eth", // This is the public RPC we have added, please pass on your own endpoint while creating an app
-          },
-          // uiConfig refers to the whitelabeling options, which is available only on Growth Plan and above
-          // Please remove this parameter if you're on the Base Plan
-          uiConfig: {
-            appName: "W3A Heroes",
-            mode: "light",
-            // loginMethodsOrder: ["apple", "google", "twitter"],
-            logoLight: "https://web3auth.io/images/w3a-L-Favicon-1.svg",
-            logoDark: "https://web3auth.io/images/w3a-D-Favicon-1.svg",
-            defaultLanguage: "en", // en, de, ja, ko, zh, es, fr, pt, nl
-            loginGridCol: 3,
-            primaryButton: "externalLogin", // "externalLogin" | "socialLogin" | "emailLogin"
-          },
-          web3AuthNetwork: "cyan",
-        });
-
-        // plugins and adapters are optional and can be added as per your requirement
-        // read more about plugins here: https://web3auth.io/docs/sdk/web/plugins/
-
-        // adding torus wallet connector plugin
-
-        const torusPlugin = new TorusWalletConnectorPlugin({
-          torusWalletOpts: {},
-          walletInitOptions: {
-            whiteLabel: {
-              theme: { isDark: true, colors: { primary: "#00a8ff" } },
-              logoDark: "https://web3auth.io/images/w3a-L-Favicon-1.svg",
-              logoLight: "https://web3auth.io/images/w3a-D-Favicon-1.svg",
-            },
-            useWalletConnect: true,
-            enableLogging: true,
-          },
-        });
-        setTorusPlugin(torusPlugin);
-        await web3auth.addPlugin(torusPlugin);
-
-        // read more about adapters here: https://web3auth.io/docs/sdk/web/adapters/
-
-        // adding wallet connect v1 adapter
-        // const walletConnectV1Adapter = new WalletConnectV1Adapter({
-        //   adapterSettings: {
-        //     bridge: "https://bridge.walletconnect.org",
-        //   },
-        //   clientId,
-        // });
-
-        // web3auth.configureAdapter(walletConnectV1Adapter);
-
-        // adding wallet connect v2 adapter
-        const defaultWcSettings = await getWalletConnectV2Settings(
-          "eip155",
-          [1],
-          "04309ed1007e77d1f119b85205bb779d"
-        );
-        const walletConnectV2Adapter = new WalletConnectV2Adapter({
-          adapterSettings: { ...defaultWcSettings.adapterSettings },
-          loginSettings: { ...defaultWcSettings.loginSettings },
-        });
-
-        web3auth.configureAdapter(walletConnectV2Adapter);
-
-        // adding metamask adapter
-
-        const metamaskAdapter = new MetamaskAdapter({
-          clientId,
-          sessionTime: 3600, // 1 hour in seconds
-          web3AuthNetwork: "cyan",
-          chainConfig: {
-            chainNamespace: CHAIN_NAMESPACES.EIP155,
-            chainId: "0x1",
-            rpcTarget: "https://rpc.ankr.com/eth", // This is the public RPC we have added, please pass on your own endpoint while creating an app
-          },
-        });
-        // we can change the above settings using this function
-        metamaskAdapter.setAdapterSettings({
-          sessionTime: 86400, // 1 day in seconds
-          chainConfig: {
-            chainNamespace: CHAIN_NAMESPACES.EIP155,
-            chainId: "0x89",
-            rpcTarget: "https://rpc-mainnet.matic.network", // This is the public RPC we have added, please pass on your own endpoint while creating an app
-          },
-          web3AuthNetwork: "cyan",
-        });
-
-        // it will add/update  the metamask adapter in to web3auth class
-        web3auth.configureAdapter(metamaskAdapter);
-
-        const torusWalletAdapter = new TorusWalletAdapter({
-          clientId,
-        });
-
-        // it will add/update  the torus-evm adapter in to web3auth class
-        web3auth.configureAdapter(torusWalletAdapter);
-
-        setWeb3auth(web3auth);
-        setProvider(web3auth.provider);
-
-        await web3auth.initModal();
-        if (web3auth.connected) {
-          setLoggedIn(true);
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    init();
-  }, []);
-  const login = async () => {
-    if (!web3auth) {
-      uiConsole("web3auth not initialized yet");
-      return;
-    }
-    const web3authProvider = await web3auth.connect();
-    setProvider(web3authProvider);
-    window.location.reload()
-  };
-
-  const authenticateUser = async () => {
-    if (!web3auth) {
-      uiConsole("web3auth not initialized yet");
-      return;
-    }
-    const idToken = await web3auth.authenticateUser();
-    uiConsole(idToken);
-  };
-
-  const getUserInfo = async () => {
-    if (!web3auth) {
-      uiConsole("web3auth not initialized yet");
-      return;
-    }
-    const user = await web3auth.getUserInfo();
-    console.log({ user })
-    uiConsole(user);
-  };
-
-  const logout = async () => {
-    if (!web3auth) {
-      uiConsole("web3auth not initialized yet");
-      return;
-    }
-    await web3auth.logout();
-    setProvider(null);
-    setLoggedIn(false);
-    window.location.reload()
-  };
-
-  const showWCM = async () => {
-    if (!torusPlugin) {
-      uiConsole("torus plugin not initialized yet");
-      return;
-    }
-    torusPlugin.showWalletConnectScanner();
-    uiConsole();
-  };
-
-  const initiateTopUp = async () => {
-    if (!torusPlugin) {
-      uiConsole("torus plugin not initialized yet");
-      return;
-    }
-    torusPlugin.initiateTopup("moonpay", {
-      selectedAddress: "0x8cFa648eBfD5736127BbaBd1d3cAe221B45AB9AF",
-      selectedCurrency: "USD",
-      fiatValue: 100,
-      selectedCryptoCurrency: "ETH",
-      chainNetwork: "mainnet",
-    });
-  };
-
-  const getChainId = async () => {
-    if (!provider) {
-      uiConsole("provider not initialized yet");
-      return;
-    }
-    const rpc = new RPC(provider);
-    const chainId = await rpc.getChainId();
-    uiConsole(chainId);
-  };
-
-  const addChain = async () => {
-    if (!provider) {
-      uiConsole("provider not initialized yet");
-      return;
-    }
-    const newChain = {
-      chainId: "0x5",
-      displayName: "Goerli",
-      chainNamespace: CHAIN_NAMESPACES.EIP155,
-      tickerName: "Goerli",
-      ticker: "ETH",
-      decimals: 18,
-      rpcTarget: "https://rpc.ankr.com/eth_goerli",
-      blockExplorer: "https://goerli.etherscan.io",
-    };
-    await web3auth?.addChain(newChain);
-    uiConsole("New Chain Added");
-  };
-
-  const switchChain = async () => {
-    if (!provider) {
-      uiConsole("provider not initialized yet");
-      return;
-    }
-    await web3auth?.switchChain({ chainId: "0x5" });
-    uiConsole("Chain Switched");
-  };
-
-  const getAccounts = async () => {
-    if (!provider) {
-      uiConsole("provider not initialized yet");
-      return;
-    }
-    const rpc = new RPC(provider);
-    const address = await rpc.getAccounts();
-    uiConsole(address);
-  };
-
-  const getBalance = async () => {
-    if (!provider) {
-      uiConsole("provider not initialized yet");
-      return;
-    }
-    const rpc = new RPC(provider);
-    const balance = await rpc.getBalance();
-    uiConsole(balance);
-  };
-
-  const sendTransaction = async () => {
-    if (!provider) {
-      uiConsole("provider not initialized yet");
-      return;
-    }
-    const rpc = new RPC(provider);
-    const receipt = await rpc.sendTransaction();
-    uiConsole(receipt);
-  };
-
-  const signMessage = async () => {
-    if (!provider) {
-      uiConsole("provider not initialized yet");
-      return;
-    }
-    const rpc = new RPC(provider);
-    const signedMessage = await rpc.signMessage();
-    uiConsole(signedMessage);
-  };
-
-  const getPrivateKey = async () => {
-    if (!provider) {
-      uiConsole("provider not initialized yet");
-      return;
-    }
-    const rpc = new RPC(provider);
-    const privateKey = await rpc.getPrivateKey();
-    uiConsole(privateKey);
-  };
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  function uiConsole(...args: any[]): void {
-    const el = document.querySelector("#console>p");
-    if (el) {
-      el.innerHTML = JSON.stringify(args || {}, null, 2);
-    }
-  }
-
-  const unloggedInView = (
-    <button onClick={login} className="card">
-      Login NOw
-    </button>
-  );
-  const loggedInView = (
-    <>
-      <div className="flex flex-col">
-        <div>
-          <button onClick={getUserInfo} className="card">
-            Get User Info
-          </button>
-        </div>
-        <div>
-          <button onClick={authenticateUser} className="card">
-            Get ID Token
-          </button>
-        </div>
-        <div>
-          <button onClick={showWCM} className="card">
-            Show Wallet Connect Modal
-          </button>
-        </div>
-        <div>
-          <button onClick={initiateTopUp} className="card">
-            initiateTopUp
-          </button>
-        </div>
-        <div>
-          <button onClick={getChainId} className="card">
-            Get Chain ID
-          </button>
-        </div>
-        <div>
-          <button onClick={addChain} className="card">
-            Add Chain
-          </button>
-        </div>
-        <div>
-          <button onClick={switchChain} className="card">
-            Switch Chain
-          </button>
-        </div>
-        <div>
-          <button onClick={getAccounts} className="card">
-            Get Accounts
-          </button>
-        </div>
-        <div>
-          <button onClick={getBalance} className="card">
-            Get Balance
-          </button>
-        </div>
-        <div>
-          <button onClick={sendTransaction} className="card">
-            Send Transaction
-          </button>
-        </div>
-        <div>
-          <button onClick={signMessage} className="card">
-            Sign Message
-          </button>
-        </div>
-        <div>
-          <button onClick={getPrivateKey} className="card">
-            Get Private Key
-          </button>
-        </div>
-        <div>
-          <button onClick={logout} className="card">
-            Log Out
-          </button>
-        </div>
-      </div>
-      <div id="console" style={{ whiteSpace: "pre-line" }}>
-        <p style={{ whiteSpace: "pre-line" }}></p>
-      </div>
-    </>
-  );
+   const { address, connector, isConnected } = useAccount();
+  const { connect, connectors, error } = useConnect();
+  const { disconnect } = useDisconnect();
   return (
     <><header className="sticky top-0 z-50 flex h-16 w-full shrink-0 items-center justify-between border-b bg-gradient-to-b from-background/10 via-background/50 to-background/80 px-4 backdrop-blur-xl">
       <div className="flex items-center gap-4">
-        {console.log({ loggedIn })}
-        {loggedIn ? (
+       
+        {isConnected ? (
           <>
             <Sidebar>
               <React.Suspense fallback={<div className="flex-1 overflow-auto" />}>
                 {/* @ts-ignore */}
-                <SidebarList userId={session?.user?.email} />
+                <SidebarList  />
               </React.Suspense>
               <SidebarFooter>
                 <ThemeToggle />
@@ -451,11 +93,56 @@ export function Header() {
       </div>
       <div className="flex items-center justify-end space-x-2">
         <div className="flex items-center">
-          {loggedIn ?
-            <button className="w-32 border rounded-sm hover:bg-red-600 hover:text-white text-red-400 font-semibold p-1" onClick={logout}>Logout</button>
-            :
-            <button className="w-32 border rounded-sm hover:bg-green-600 hover:text-white text-green-600 font-semibold p-1" onClick={login}>Login</button>
+         
+          { isConnected ? ( <>
+        
+        
+            <NetworkSwitcher />
+            <div class="relative inline-flex">
+      
+    <svg class="w-2 h-2 absolute top-0 right-0 m-3 pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 412 232"><path d="M206 171.144L42.678 7.822c-9.763-9.763-25.592-9.763-35.355 0-9.763 9.764-9.763 25.592 0 35.355l181 181c4.88 4.882 11.279 7.323 17.677 7.323s12.796-2.441 17.678-7.322l181-181c9.763-9.764 9.763-25.592 0-35.355-9.763-9.763-25.592-9.763-35.355 0L206 171.144z" fill="#ffff" fill-rule="nonzero"/></svg>
+     
+        <select class="border border-green-300 rounded-md text-white h-8 pl-6 pr-10 bg-green-700 hover:border-green-400 focus:outline-none appearance-none">
+      
+          <option>
+                  {/* { address?.substring( 0, 5 ) + "..." } */}
+                  {address?.slice(0, 3)}...{address?.slice(-3)}
+          </option>
+     
+      </select>
+
+
+            </div>
+
+
+              
+             
+        <button className="border rounded-md bg-green-700  text-white font-semibold p-1"
+          onClick={ disconnect as any }>
+              <svg style={ { fontSize: "10px" } } xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" fill="white"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+              
+        </button>
+        {/* <Balance /> */}
+       
+      
+          </> ) : ( <>
+          
+          
+          { connectors.map( ( connector ) =>
+        {
+          if ( connector.name == 'Injected' )
+          {
+            return (
+            <button className="w-32 border rounded-sm hover:bg-green-600 hover:text-white text-green-600 font-semibold p-1" key={ connector.id } onClick={ () => connect( { connector } ) }>
+              Login
+            </button>
+          );
           }
+          
+        })}
+        {error && <div>{error.message}</div>}
+          </> ) }
+          
           {/* {session?.user ? (
             <UserMenu user={session.user} />
           ) : (
@@ -466,7 +153,8 @@ export function Header() {
       </div>
 
     </header>
-      {/* <div className="flex m-4">{loggedIn ? loggedInView : unloggedInView}</div>*/}
+    
+
     </>
 
   )

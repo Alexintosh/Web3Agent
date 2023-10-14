@@ -17,10 +17,6 @@ export interface UserMenuProps {
   user: Session['user']
 }
 
-function getUserInitials(name: string) {
-  const [firstName, lastName] = name.split(' ')
-  return lastName ? `${firstName[0]}${lastName[0]}` : firstName.slice(0, 2)
-}
 
 export function UserMenu({ user }: UserMenuProps) {
   return (
@@ -28,17 +24,6 @@ export function UserMenu({ user }: UserMenuProps) {
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button className="">
-            {/* {user?.image ? (
-              <Image
-                className="w-6 h-6 transition-opacity duration-300 rounded-full select-none ring-1 ring-zinc-100/10 "
-                src={user?.image ? `${user.image}&s=60` : ''}
-                alt={user.name ?? 'Avatar'}
-              />
-            ) : (
-              <div className="flex items-center justify-center text-xs font-medium uppercase rounded-full select-none h-7 w-7 shrink-0 bg-muted/50 text-muted-foreground">
-                {user?.name ? getUserInitials(user?.name) : null}
-              </div>
-            )} */}
             <IconUser></IconUser>
             <span className="ml-2">{user?.name}</span>
           </Button>
@@ -49,9 +34,7 @@ export function UserMenu({ user }: UserMenuProps) {
           className="w-[180px] mr-4"
         >
           <DropdownMenuItem className="flex-col items-start">
-            {/* <div className="text-xs cursor-pointer font-medium text-emerald-700">
-              {user?.name}
-            </div> */}
+           
             <div style={{ display: "flex", flexDirection: "row" }} className="text-xs cursor-pointer text-emerald-700">
               {user?.email}
             </div>
