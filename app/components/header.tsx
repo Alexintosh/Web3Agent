@@ -106,7 +106,7 @@ export function Header() {
       
           <option>
                   {/* { address?.substring( 0, 5 ) + "..." } */}
-                  {address.slice(0, 3)}...{address.slice(-3)}
+                  {address?.slice(0, 3)}...{address?.slice(-3)}
           </option>
      
       </select>

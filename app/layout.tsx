@@ -16,14 +16,14 @@ import { WagmiConfig, createConfig, configureChains, useAccount, useConnect, use
 import { CoinbaseWalletConnector } from "wagmi/connectors/coinbaseWallet";
 import { InjectedConnector } from "wagmi/connectors/injected";
 import { WalletConnectConnector } from "wagmi/connectors/walletConnect";
-import { mainnet, goerli, polygonMumbai } from "wagmi/chains";
+import { mainnet, goerli, polygonMumbai,scrollSepolia,scrollTestnet } from "wagmi/chains";
 import { publicProvider } from "wagmi/providers/public";
 import { NetworkSwitcher } from "../app/components/switchNetwork";
 import Web3AuthConnectorInstance from "../app/components/Web3AuthConnectorInstance";
 import { Balance } from "../app/components/balance";
 
 
-const { chains, publicClient, webSocketPublicClient } = configureChains([goerli, mainnet, polygonMumbai ], [publicProvider()]);
+const { chains, publicClient, webSocketPublicClient } = configureChains([goerli, polygonMumbai, scrollSepolia,scrollTestnet ], [publicProvider()]);
 
 const config = createConfig({
   autoConnect: true,
