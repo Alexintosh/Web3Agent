@@ -117,9 +117,10 @@ export function Header() {
 
               
              
-        <button className="w-32 border rounded-sm hover:bg-green-600 hover:text-white text-green-600 font-semibold p-1"
+        <button className="border rounded-md bg-green-700  text-white font-semibold p-1"
           onClick={ disconnect as any }>
-          Logout
+              <svg style={ { fontSize: "10px" } } xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" fill="white"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+              
         </button>
         {/* <Balance /> */}
        
