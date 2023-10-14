@@ -55,52 +55,23 @@ const config = createConfig({
 });
 
 
-function Profile() {
-  const { address, connector, isConnected } = useAccount();
-  const { connect, connectors, error } = useConnect();
-  const { disconnect } = useDisconnect();
-
-  if (isConnected) {
-    return (
-      <div className="main">
-        <div className="title">Connected to {connector?.name}</div>
-        <div>{address}</div>
-        <button className="card" onClick={disconnect as any}>
-          Disconnect
-        </button>
-        <Balance />
-        <NetworkSwitcher />
-      </div>
-    );
-  } else {
-    return (
-      <div className="main">
-        {connectors.map((connector) => {
-          return (
-            <button className="card" key={connector.id} onClick={() => connect({ connector })}>
-              {connector.name}
-            </button>
-          );
-        })}
-        {error && <div>{error.message}</div>}
-      </div>
-    );
-  }
-}
 
 
 const inter = Inter({ subsets: ['latin'] })
 
 // export const metadata = {
-//   title: 'NextAuth Tutorial',
-//   description: 'Learn NextAuth.js by Dave Gray',
+//   title: 'Web3Agent',
+//   description: 'Web3 Agent AI',
 // }
-
-export default function RootLayout({
+export default function RootLayout ( {
+  
   children,
 }: {
   children: React.ReactNode
-}) {
+  } )
+{
+  
+
   return (
     <html lang="en">
       <body className={inter.className}>

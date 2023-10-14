@@ -74,7 +74,7 @@ export function Header() {
                 <ClearHistory clearChats={clearChats} />
               </SidebarFooter>
             </Sidebar>
-            <Link href={'/defi-prompt'} className='text-green-600 font-semibold'>
+            <Link href={'/defi-prompt'} className='text-gray-600 font-semibold'>
               Defi Prompt
             </Link>
           </>

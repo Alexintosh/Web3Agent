@@ -18,6 +18,7 @@ import { VerifyContractParams } from "@/app/lib/functions/types";
 import LoginErrorMsg from "./LoginErrorMsg";
 import React from "react";
 import WebAuth from "./WebAuth";
+import { useAccount } from "wagmi";
 
 export interface ChatProps extends React.ComponentProps<'div'> {
   initialMessages?: Message[]
@@ -27,7 +28,9 @@ export interface ChatProps extends React.ComponentProps<'div'> {
 
 export function Chat({ id, initialMessages, className }: ChatProps) {
   const [verificationParams, setVerificationParams] = useState<VerifyContractParams>()
-  const [polling, setPolling] = useState(false)
+  const [ polling, setPolling ] = useState( false )
+     const { address, connector, isConnected } = useAccount();
+
 
   useEffect(() => {
     const verifyFunction = async (verificationParams: VerifyContractParams) => {
@@ -377,7 +380,10 @@ export function Chat({ id, initialMessages, className }: ChatProps) {
 
   return (
     <>
-      <div className={cn('pb-[200px] pt-4 md:pt-10', className)}>
+      { isConnected ? ( <>
+      
+      
+       <div className={cn('pb-[200px] pt-4 md:pt-10', className)}>
         {messages.length > 1 ? (
           <>
             <ChatList messages={messages} />
@@ -397,6 +403,14 @@ export function Chat({ id, initialMessages, className }: ChatProps) {
         input={input}
         setInput={setInput}
       />
+      
+      </> ) : ( <>
+      
+          <h1>Please lgin</h1>
+      
+      
+      </> ) }
+     
     </>
   )
 }
