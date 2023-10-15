@@ -16,14 +16,15 @@ import { WagmiConfig, createConfig, configureChains, useAccount, useConnect, use
 import { CoinbaseWalletConnector } from "wagmi/connectors/coinbaseWallet";
 import { InjectedConnector } from "wagmi/connectors/injected";
 import { WalletConnectConnector } from "wagmi/connectors/walletConnect";
-import { mainnet, goerli, polygonMumbai,scrollSepolia,scrollTestnet } from "wagmi/chains";
+import { mainnet, goerli, polygonMumbai, scrollSepolia, scrollTestnet } from "wagmi/chains";
 import { publicProvider } from "wagmi/providers/public";
 import { NetworkSwitcher } from "../app/components/switchNetwork";
 import Web3AuthConnectorInstance from "../app/components/Web3AuthConnectorInstance";
 import { Balance } from "../app/components/balance";
+import { OperationsProvider } from '@/providers/operations';
 
 
-const { chains, publicClient, webSocketPublicClient } = configureChains([goerli, polygonMumbai, scrollSepolia,scrollTestnet ], [publicProvider()]);
+const { chains, publicClient, webSocketPublicClient } = configureChains([goerli, polygonMumbai, scrollSepolia, scrollTestnet], [publicProvider()]);
 
 const config = createConfig({
   autoConnect: true,
@@ -63,14 +64,13 @@ const inter = Inter({ subsets: ['latin'] })
 //   title: 'Web3Agent',
 //   description: 'Web3 Agent AI',
 // }
-export default function RootLayout ( {
-  
+export default function RootLayout({
+
   children,
 }: {
   children: React.ReactNode
-  } )
-{
-  
+}) {
+
 
   return (
     <html lang="en">
@@ -78,13 +78,15 @@ export default function RootLayout ( {
         <Providers attribute="class" defaultTheme="system" enableSystem>
           <WagmiConfig config={config}>
             <AuthProvider>
-              {/* <Navbar /> */ }
+              <OperationsProvider>
+                {/* <Navbar /> */}
 
                 <Header />
-                  {/* <Profile /> */}
-                  <main className="flex justify-center items-start p-6 min-h-screen">
-                    {children}
-                  </main>
+                {/* <Profile /> */}
+                <main className="flex justify-center items-start p-6 min-h-screen">
+                  {children}
+                </main>
+              </OperationsProvider>
             </AuthProvider>
           </WagmiConfig>
         </Providers>

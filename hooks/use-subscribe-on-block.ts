@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 
-import { useProvider } from 'wagmi';
+import { usePublicClient } from 'wagmi';
 
 type Unsubscribe = () => void;
 type Callback = (blockNumber: number, unsubscribe: Unsubscribe) => void | Promise<void>;
@@ -8,7 +8,7 @@ type Callback = (blockNumber: number, unsubscribe: Unsubscribe) => void | Promis
 export function useSubscribeOnBlock(): { subscribe: (callback: Callback) => Unsubscribe | void };
 export function useSubscribeOnBlock(callback: Callback): { subscribe: () => Unsubscribe | void };
 export function useSubscribeOnBlock(cb?: Callback) {
-  const provider = useProvider();
+  const provider = usePublicClient();
   const callbackRef = useRef<Callback>();
 
   const Unsubscribe = () => {

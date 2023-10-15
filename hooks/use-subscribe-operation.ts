@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { useProvider } from 'wagmi';
+import { usePublicClient } from 'wagmi';
 
 import { useSubscribeOnBlock } from './use-subscribe-on-block';
 
@@ -11,7 +11,7 @@ import { findBundlerTransaction } from '@/utils/find-bunler-transaction';
 
 export const useSubscribeOperation = () => {
   const [loading, setLoading] = useState<boolean>(false);
-  const provider = useProvider();
+  const provider = usePublicClient();
   // const { callAlert } = useAlert();
   const { subscribe: sub } = useSubscribeOnBlock();
 
