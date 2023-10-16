@@ -1,6 +1,6 @@
 import { createContext, useState, useEffect } from 'react';
 
-import { useProvider, useSigner } from 'wagmi';
+import { usePublicClient, useSigner } from 'wagmi';
 
 import { accountApiFactory } from '@/account-abstraction/account-api';
 import { BatchAccountAPI } from '@/account-abstraction/batch-simple-account-api';
@@ -12,7 +12,7 @@ export const SmartAccountContext = createContext<{
 }>({});
 
 export const SmartAccountProvider: CFC = ({ children }) => {
-  const provider = useProvider();
+  const provider = usePublicClient();
   const { data: signer } = useSigner();
 
   const [smartAccountApi, setSmartAccountApi] = useState<BatchAccountAPI | undefined>();
