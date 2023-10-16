@@ -98,39 +98,47 @@ import { useOperations } from '@/providers/operations';
 
 
 import React from 'react'
-
-// export default function OperationScreen({ isOpen, setIsOpen }) {
-//   const { operations, updateOperation, sendOperations, setOperations } = useOperations();
-//   console.log("1.", { operations })
-//   return (
-//     <div>
-//       <div>THIH</div>
-//       {operations?.map((item: any) => (
-//         <span>{JSON.stringify(item)}</span>
-//       ))}</div>
-//   )
-// }
-
+import { Backdrop, Box, Button, ButtonGroup, IconButton, Typography, styled } from '@mui/material';
 
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
-
+const CustomBackdropFooter = styled(ButtonGroup)(({ theme }) => ({
+  padding: theme.spacing(2),
+  borderRadius: theme.spacing(1),
+  backgroundColor: theme.palette.background.paper
+}));
 export default function OperationScreen({ isOpen, setIsOpen }) {
   // let [isOpen, setIsOpen] = useState(true)
   const { operations, updateOperation, sendOperations, setOperations } = useOperations();
-
-  function closeModal() {
-    setIsOpen(false)
-  }
-
-  function openModal() {
-    setIsOpen(true)
-  }
+  const handleCancel = () => {
+    setOperations([]);
+    setIsOpen(false);
+  };
+  console.log({ operations })
+  const handleSendOperations = async () => {
+    await sendOperations();
+    handleCancel();
+  };
+  
   console.log("1. ", operations)
   return (
     <>
-      <div className="flex items-center justify-center">
+      <div className="flex flex-col items-center justify-center">
+
         <FormsGenerator listOperations={operations} setOperation={updateOperation} />
+        <div className='w-full'>
+          <CustomBackdropFooter
+            fullWidth
+            sx={{
+              borderRadius: "isDesktop" ? 2 : 0
+            }}
+          >
+            <Button onClick={handleCancel}>Cancel</Button>
+            <Button variant="contained" onClick={handleSendOperations}>
+              Execute
+            </Button>
+          </CustomBackdropFooter>
+        </div>
       </div>
 
     </>

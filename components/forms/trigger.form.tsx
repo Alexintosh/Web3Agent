@@ -1,6 +1,6 @@
 import { ChangeEventHandler, FC, useEffect, useState } from 'react';
 
-import { ShutterSpeed } from '@mui/icons-material';
+import { MdShutterSpeed } from 'react-icons/md';
 import {
   Avatar,
   Box,
@@ -16,7 +16,7 @@ import {
   TextField,
   Typography
 } from '@mui/material';
-import { useProvider } from 'wagmi';
+import { useProvider, usePublicClient } from 'wagmi';
 
 import { RelSubHeader } from './list-subheader';
 
@@ -35,7 +35,7 @@ export const TriggerForm: FC<TriggerFormProps> = ({ data, setData }) => {
   const [innerData, setInnerData] = useState<TriggerParams>(data);
   const [isEditing, setIsEditing] = useState<boolean>(false);
 
-  const provider = useProvider();
+  const provider = usePublicClient();
   const { smartAccountAddress } = useSmartAccount();
 
   useEffect(() => {
@@ -97,7 +97,7 @@ export const TriggerForm: FC<TriggerFormProps> = ({ data, setData }) => {
           gap: 1
         }}
       >
-        <Chip avatar={<ShutterSpeed />} label="Trigger" />
+        <Chip avatar={<MdShutterSpeed />} label="Trigger" />
         <Chip label="Create Portfolio" />
       </ButtonGroup>
 

@@ -18,15 +18,15 @@ interface FormGeneratorProps {
 }
 
 const FormsDictionary = {
-  // [Operation.SendToken]: SendTokenForm,
-  // [Operation.LidoDeposit]: LidoDepositForm,
-  // [Operation.WrapEth]: WrapEthForm,
-  // [Operation.AaveBorrow]: createAaveV3Form('Borrow'),
-  // [Operation.AaveDeposit]: createAaveV3Form('Deposit'),
-  // [Operation.AaveWithdraw]: createAaveV3Form('Withdraw'),
-  // [Operation.AaveRepay]: createAaveV3Form('Repay'),
+  [Operation.SendToken]: SendTokenForm,
+  [Operation.LidoDeposit]: LidoDepositForm,
+  [Operation.WrapEth]: WrapEthForm,
+  [Operation.AaveBorrow]: createAaveV3Form('Borrow'),
+  [Operation.AaveDeposit]: createAaveV3Form('Deposit'),
+  [Operation.AaveWithdraw]: createAaveV3Form('Withdraw'),
+  [Operation.AaveRepay]: createAaveV3Form('Repay'),
   [Operation.SwapTokens]: UniswapForm,
-  // [Operation.CreatePortfolio]: TriggerForm
+  [Operation.CreatePortfolio]: TriggerForm
 } as const;
 
 export const FormsGenerator: FC<FormGeneratorProps> = ({ listOperations, setOperation }) => {
