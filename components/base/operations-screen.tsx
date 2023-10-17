@@ -134,7 +134,7 @@ export default function OperationScreen({ isOpen, setIsOpen }) {
             }}
           >
             <Button onClick={handleCancel}>Cancel</Button>
-            <Button variant="contained" onClick={handleSendOperations}>
+            <Button className='bg-green-700' variant="contained" onClick={handleSendOperations}>
               Execute
             </Button>
           </CustomBackdropFooter>
