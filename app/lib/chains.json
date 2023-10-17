@@ -123,6 +123,40 @@
     ]
   },
   {
+    "name": "Scroll Sepolia",
+    "title": "Scroll Sepolia Testnet",
+    "chain": "ETH",
+    "rpc": [
+      "https://scroll-sepolia-testnet.rpc.thirdweb.com",
+      "wss://sepolia.infura.io/v3/${INFURA_API_KEY}",
+      "https://sepolia-rpc.scroll.io/"
+    ],
+    "faucets": [
+      "http://fauceth.komputing.org?chain=5&address=${ADDRESS}",
+      "https://goerli-faucet.slock.it?address=${ADDRESS}",
+      "https://faucet.goerli.mudit.blog"
+    ],
+    "nativeCurrency": {
+      "name": "Sepolia Ether",
+      "symbol": "ETH",
+      "decimals": 18
+    },
+    "infoURL": "https://goerli.net/#about",
+    "shortName": "gor",
+    "chainId": 534351,
+    "networkId": 534351,
+    "ens": {
+      "registry": "0x112234455c3a32fd11230c42e7bccd4a84e02010"
+    },
+    "explorers": [
+      {
+        "name": "etherscan-goerli",
+        "url": "https://sepolia.scrollscan.dev",
+        "standard": "EIP3091"
+      }
+    ]
+  },
+  {
     "name": "Goerli",
     "title": "Ethereum Testnet Goerli",
     "chain": "ETH",
@@ -10418,42 +10452,6 @@
         "standard": "none"
       }
     ]
-  },
-  {
-    "name": "Kroma Sepolia",
-    "title": "Kroma Testnet Sepolia",
-    "chainId": 2357,
-    "shortName": "kroma-sepolia",
-    "chain": "ETH",
-    "networkId": 2357,
-    "nativeCurrency": {
-      "name": "Sepolia Ether",
-      "symbol": "ETH",
-      "decimals": 18
-    },
-    "rpc": [
-      "https://api.sepolia.kroma.network"
-    ],
-    "faucets": [],
-    "infoURL": "https://kroma.network",
-    "icon": "kroma",
-    "explorers": [
-      {
-        "name": "blockscout",
-        "url": "https://blockscout.sepolia.kroma.network",
-        "icon": "kroma",
-        "standard": "EIP3091"
-      }
-    ],
-    "parent": {
-      "type": "L2",
-      "chain": "eip155-11155111",
-      "bridges": [
-        {
-          "url": "https://kroma.network/bridge"
-        }
-      ]
-    }
   },
   {
     "name": "BOMB Chain Testnet",
@@ -21049,40 +21047,6 @@
       {
         "name": "Soverun",
         "url": "https://explorer.soverun.com",
-        "standard": "EIP3091"
-      }
-    ]
-  },
-  {
-    "name": "Sepolia",
-    "title": "Ethereum Testnet Sepolia",
-    "chain": "ETH",
-    "rpc": [
-      "https://rpc.sepolia.org",
-      "https://rpc2.sepolia.org",
-      "https://rpc-sepolia.rockx.com"
-    ],
-    "faucets": [
-      "http://fauceth.komputing.org?chain=11155111&address=${ADDRESS}"
-    ],
-    "nativeCurrency": {
-      "name": "Sepolia Ether",
-      "symbol": "ETH",
-      "decimals": 18
-    },
-    "infoURL": "https://sepolia.otterscan.io",
-    "shortName": "sep",
-    "chainId": 11155111,
-    "networkId": 11155111,
-    "explorers": [
-      {
-        "name": "etherscan-sepolia",
-        "url": "https://sepolia.etherscan.io",
-        "standard": "EIP3091"
-      },
-      {
-        "name": "otterscan-sepolia",
-        "url": "https://sepolia.otterscan.io",
         "standard": "EIP3091"
       }
     ]
