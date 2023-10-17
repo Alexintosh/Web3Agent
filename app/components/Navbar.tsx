@@ -6,7 +6,7 @@ export default async function Navbar() {
     const session: any = {}//await getServerSession(options)
     console.log({ session })
     return (
-        <nav className="bg-blue-800 p-4" >
+        <nav className="bg-green-800 p-4" >
             <ul className="flex justify-evenly text-2xl font-bold">
                 <li><Link href="/">Home</Link></li>
                 {
