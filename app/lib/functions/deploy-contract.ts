@@ -16,7 +16,8 @@ export default async function deployContract({
 }: DeployContractConfig): Promise<DeployContractResponse> {
   const viemChain = createViemChain(chainName) || polygonMumbai
   const fileName = contractName.replace(/[\/\\:*?"<>|.\s]+$/g, '_') + '.sol'
-
+  console.log({ chainName, contractName, viemChain, fileName })
+  console.log(JSON.stringify(viemChain, null, 2))
   // Prepare the sources object for the Solidity compiler
   const handleImportsResult = await handleImports(sourceCode)
 
@@ -92,7 +93,7 @@ export default async function deployContract({
   }
 
   const rpcUrl = getRpcUrl(viemChain)
-
+  console.log({ rpcUrl })
   //Prepare provider and signer
   const publicClient = createPublicClient({
     chain: viemChain,

@@ -29,9 +29,7 @@ export interface ChatProps extends React.ComponentProps<'div'> {
 export function Chat({ id, initialMessages, className }: ChatProps) {
   const [verificationParams, setVerificationParams] = useState<VerifyContractParams>()
   const [ polling, setPolling ] = useState( false )
-     const { address, connector, isConnected } = useAccount();
-
-
+  const { address, connector, isConnected } = useAccount();
   useEffect(() => {
     const verifyFunction = async (verificationParams: VerifyContractParams) => {
       if (verificationParams) {
@@ -380,37 +378,37 @@ export function Chat({ id, initialMessages, className }: ChatProps) {
 
   return (
     <>
-      { isConnected ? ( <>
-      
-      
-       <div className={cn('pb-[200px] pt-4 md:pt-10', className)}>
-        {messages.length > 1 ? (
-          <>
-            <ChatList messages={messages} />
-            <ChatScrollAnchor trackVisibility={isLoading} />
-          </>
-        ) : (
-          <EmptyScreen setInput={setInput} />
-        )}
-      </div>
-      <ChatPanel
-        id={id}
-        isLoading={isLoading}
-        stop={stop}
-        append={append}
-        reload={reload}
-        messages={messages}
-        input={input}
-        setInput={setInput}
-      />
-      
-      </> ) : ( <>
-      
-          <h1>Please lgin</h1>
-      
-      
-      </> ) }
-     
+      {isConnected ? (<>
+
+
+        <div className={cn('pb-[200px] pt-4 md:pt-10', className)}>
+          {messages.length > 1 ? (
+            <>
+              <ChatList messages={messages} />
+              <ChatScrollAnchor trackVisibility={isLoading} />
+            </>
+          ) : (
+            <EmptyScreen setInput={setInput} />
+          )}
+        </div>
+        <ChatPanel
+          id={id}
+          isLoading={isLoading}
+          stop={stop}
+          append={append}
+          reload={reload}
+          messages={messages}
+          input={input}
+          setInput={setInput}
+        />
+
+      </>) : (<>
+
+        <h1>Please lgin</h1>
+
+
+      </>)}
+
     </>
   )
 }
