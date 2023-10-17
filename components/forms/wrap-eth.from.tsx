@@ -67,7 +67,7 @@ export const WrapEthForm: FC<WrapEthFormProps> = ({ data, setData }) => {
           width: '100%'
         }}
       >
-        {isEditing ? <Button onClick={handleSave}>Save</Button> : <Button onClick={handleEdit}>Edit</Button>}
+        {isEditing ? <Button style={{borderColor:"green",color:"green"}} onClick={handleSave}>Save</Button> : <Button style={{borderColor:"green",color:"green"}} onClick={handleEdit}>Edit</Button>}
       </ButtonGroup>
     </Box>
   );

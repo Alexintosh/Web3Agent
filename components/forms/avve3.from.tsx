@@ -138,7 +138,7 @@ export const createAaveV3Form = <T extends AAveV3Params>(label: string) => {
             width: '100%'
           }}
         >
-          {isEditing ? <Button onClick={handleSave}>Save</Button> : <Button onClick={handleEdit}>Edit</Button>}
+          {isEditing ? <Button style={{borderColor:"green",color:"green"}} onClick={handleSave}>Save</Button> : <Button style={{borderColor:"green",color:"green"}} onClick={handleEdit}>Edit</Button>}
         </ButtonGroup>
       </Box>
     );

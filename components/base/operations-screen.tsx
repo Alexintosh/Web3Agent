@@ -133,8 +133,8 @@ export default function OperationScreen({ isOpen, setIsOpen }) {
               borderRadius: "isDesktop" ? 2 : 0
             }}
           >
-            <Button onClick={handleCancel}>Cancel</Button>
-            <Button className='bg-green-700' variant="contained" onClick={handleSendOperations}>
+            <Button style={{borderColor:"green",color:"green"}} onClick={handleCancel}>Cancel</Button>
+            <Button style={{backgroundColor:"green"}} className='bg-green-700' variant="contained" onClick={handleSendOperations}>
               Execute
             </Button>
           </CustomBackdropFooter>
