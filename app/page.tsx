@@ -19,14 +19,13 @@
 
 import { Message } from 'ai'
 
-import { Chat } from '@/app/components/chat'
+import { Chat } from '@/app/_components/chat'
 import { nanoid } from '@/app/lib/utils'
 import { useAccount } from 'wagmi';
 
 // export const runtime = 'edge'
 
-export default function IndexPage ()
-{
+export default function IndexPage() {
 
   const id = nanoid()
   const initialMessages: Message[] = [
@@ -62,7 +61,7 @@ contract GPTToken is ERC721, Ownable {
     }
   ]
   return <>
-  
-  <Chat initialMessages={initialMessages} id={id} />
-  </> 
+
+    <Chat initialMessages={initialMessages} id={id} />
+  </>
 }

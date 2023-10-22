@@ -19542,6 +19542,11 @@
     "slip44": 1,
     "explorers": [
       {
+        "name": "Filfox - Calibration",
+        "url": "https://calibration.filfox.info/en/message",
+        "standard": "none"
+      },
+      {
         "name": "Filscan - Calibration",
         "url": "https://calibration.filscan.io",
         "standard": "none"
@@ -19549,11 +19554,6 @@
       {
         "name": "Filscout - Calibration",
         "url": "https://calibration.filscout.com/en",
-        "standard": "none"
-      },
-      {
-        "name": "Filfox - Calibration",
-        "url": "https://calibration.filfox.info",
         "standard": "none"
       }
     ]
@@ -20089,67 +20089,6 @@
       "chain": "eip155-1",
       "bridges": []
     }
-  },
-  {
-    "name": "Scroll Alpha Testnet",
-    "chain": "ETH",
-    "status": "incubating",
-    "rpc": [
-      "https://alpha-rpc.scroll.io/l2"
-    ],
-    "faucets": [],
-    "features": [
-      {
-        "name": "EIP1559"
-      }
-    ],
-    "nativeCurrency": {
-      "name": "Ether",
-      "symbol": "ETH",
-      "decimals": 18
-    },
-    "infoURL": "https://scroll.io",
-    "shortName": "scr-alpha",
-    "chainId": 534353,
-    "networkId": 534353,
-    "explorers": [
-      {
-        "name": "Scroll Alpha Testnet Block Explorer",
-        "url": "https://blockscout.scroll.io",
-        "standard": "EIP3091"
-      }
-    ],
-    "parent": {
-      "type": "L2",
-      "chain": "eip155-5",
-      "bridges": []
-    }
-  },
-  {
-    "name": "Scroll Pre-Alpha Testnet",
-    "chain": "ETH",
-    "rpc": [
-      "https://prealpha-rpc.scroll.io/l2"
-    ],
-    "faucets": [
-      "https://prealpha.scroll.io/faucet"
-    ],
-    "nativeCurrency": {
-      "name": "Ether",
-      "symbol": "TSETH",
-      "decimals": 18
-    },
-    "infoURL": "https://scroll.io",
-    "shortName": "scr-prealpha",
-    "chainId": 534354,
-    "networkId": 534354,
-    "explorers": [
-      {
-        "name": "Scroll L2 Block Explorer",
-        "url": "https://l2scan.scroll.io",
-        "standard": "EIP3091"
-      }
-    ]
   },
   {
     "name": "BeanEco SmartChain",

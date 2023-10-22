@@ -1,9 +1,9 @@
 import { useSmartAccount } from './use-smart-account';
 
-import { TypeDataFreeTransactionDetails } from '@/account-abstraction/batch-simple-account-api';
-import { bundlerClient } from '@/account-abstraction/bundler-client';
-import { preOpToBatchOp } from '@/core/helpers/pre-op-to-batch-op';
-import { PreOpStruct } from '@/types/custom';
+import { TypeDataFreeTransactionDetails } from '../account-abstraction/batch-simple-account-api';
+import { bundlerClient } from '../account-abstraction/bundler-client';
+import { preOpToBatchOp } from '../core/helpers/pre-op-to-batch-op';
+import { PreOpStruct } from '../types/custom';
 
 interface Options {
   log?: boolean;

@@ -5,9 +5,9 @@ import { Erc20 } from './erc20-token';
 import { PriceFeedABI, simpleTriggerFactoryABI } from '@/config/abi';
 import { TRIGGER_FACTORY_ADDRESS } from '@/config/contracts';
 import { tokens } from '@/config/tokens';
-import { PreOpStruct } from '@/types/custom';
-import { getTokenByTokenSymbol } from '@/utils/get-token-by-symbol';
-import { toAtomic } from '@/utils/units';
+import { PreOpStruct } from '../../types/custom';
+import { getTokenByTokenSymbol } from '../../utils/get-token-by-symbol';
+import { toAtomic } from '../../utils/units';
 
 export namespace Trigger {
   export interface CreateTriggerPreOpParams {

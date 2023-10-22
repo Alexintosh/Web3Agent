@@ -1,10 +1,14 @@
+import * as React from 'react';
+
 import { createContext, useState, useEffect } from 'react';
 
-import { usePublicClient, useSigner } from 'wagmi';
+// import { usePublicClient, useWalletClient } from 'wagmi';
+import { useProvider, useSigner } from 'wagmi';
 
-import { accountApiFactory } from '@/account-abstraction/account-api';
-import { BatchAccountAPI } from '@/account-abstraction/batch-simple-account-api';
-import { CFC } from '@/types/react';
+
+import { accountApiFactory } from '../account-abstraction/account-api';
+import { BatchAccountAPI } from '../account-abstraction/batch-simple-account-api';
+import { CFC } from '../types/react';
 
 export const SmartAccountContext = createContext<{
   smartAccountApi?: BatchAccountAPI;
@@ -12,16 +16,18 @@ export const SmartAccountContext = createContext<{
 }>({});
 
 export const SmartAccountProvider: CFC = ({ children }) => {
-  const provider = usePublicClient();
+  const provider = useProvider();
   const { data: signer } = useSigner();
 
   const [smartAccountApi, setSmartAccountApi] = useState<BatchAccountAPI | undefined>();
   const [smartAccountAddress, setSmartAccountAddress] = useState<`0x${string}` | undefined>();
 
-  useEffect(() => {
+  useEffect( () =>
+  {
     (async () => {
       try {
-        if (!provider || !signer) {
+        if ( !provider || !signer )
+        {
           return;
         }
 
@@ -33,16 +39,23 @@ export const SmartAccountProvider: CFC = ({ children }) => {
         setSmartAccountApi(tempBatchAccountApi);
 
         const accAddress = (await tempBatchAccountApi.getAccountAddress()) as `0x${string}`;
-        setSmartAccountAddress(accAddress);
+        setSmartAccountAddress( accAddress );
+
+        console.log("smart account address is =========================>>>>>>>>>>>",accAddress);
+        
       } catch (e) {
-        console.error(e);
+        console.error("error is ========================>>>>>>>>>>>>>",e);
       }
-    })();
+    } )();
+    
   }, [provider, signer]);
 
   return (
+    
     <SmartAccountContext.Provider value={{ smartAccountApi, smartAccountAddress }}>
-      {children}
-    </SmartAccountContext.Provider>
+      { children }
+      
+      </SmartAccountContext.Provider>
+  
   );
 };

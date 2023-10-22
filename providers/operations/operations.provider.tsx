@@ -1,14 +1,16 @@
+import * as React from 'react';
+
 import { OperationsContext } from './operations.context';
 import { useOperationState } from './use-operation-state';
 
-import { OperationDictionary } from '@/core/operations/operation';
-import { OperationData } from '@/core/operations/operation.type';
-import { useSendBatch } from '@/hooks/use-send-batch';
-import { useSmartAccount } from '@/hooks/use-smart-account';
-import { useSubscribeOperation } from '@/hooks/use-subscribe-operation';
-import { PreOpStruct } from '@/types/custom';
-import { CFC } from '@/types/react';
-import { asyncReduce } from '@/utils/async-reducer';
+import { OperationDictionary } from '../../core/operations/operation';
+import { OperationData } from '../../core/operations/operation.type';
+import { useSendBatch } from '../../hooks/use-send-batch';
+import { useSmartAccount } from '../../hooks/use-smart-account';
+import { useSubscribeOperation } from '../../hooks/use-subscribe-operation';
+import { PreOpStruct } from '../../types/custom';
+import { CFC } from '../../types/react';
+import { asyncReduce } from '../../utils/async-reducer';
 
 const reducer = async (acc: Array<PreOpStruct>, operation: OperationData) => {
   const creator = OperationDictionary[operation.kind];

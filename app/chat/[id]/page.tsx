@@ -2,7 +2,7 @@ import { type Metadata } from 'next'
 import { notFound, redirect } from 'next/navigation'
 // import { auth } from '@/auth'
 import { getChat } from '@/app/actions'
-import { Chat } from '@/app/components/chat'
+import { Chat } from '@/app/_components/chat'
 // import { options } from '@/app/api/auth/[...nextauth]/options'
 // import { getServerSession } from 'next-auth'
 

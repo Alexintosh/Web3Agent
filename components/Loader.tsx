@@ -28,4 +28,4 @@ export default function Loader({ onClick, showCloseIcon }: LoaderTypeType) {
     );
 }
 
-type LoaderTypeType = { onClick?: () => void; showCloseIcon?: boolean };
+type LoaderTypeType = { onClick?: () => any; showCloseIcon?: boolean };

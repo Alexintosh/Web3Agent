@@ -20,7 +20,7 @@ export default async function deployContract({
   console.log(JSON.stringify(viemChain, null, 2))
   // Prepare the sources object for the Solidity compiler
   const handleImportsResult = await handleImports(sourceCode)
-
+  console.log({ viemChain: JSON.stringify(viemChain, null, 2) })
   const sources = {
     [fileName]: {
       content: handleImportsResult?.sourceCode
@@ -136,7 +136,14 @@ export default async function deployContract({
     args: constructorArgs || []
   })
 
-  const deployTxUrl = `${getExplorerUrl(viemChain)}/tx/${deployHash}`
+  let deployTxUrl = '';
+  console.log({ viemChainid: viemChain?.id })
+  const baseExplorerUrl = getExplorerUrl(viemChain)
+  if (viemChain?.id == 314159) {
+    deployTxUrl = `${baseExplorerUrl}/${deployHash}`
+  } else {
+    deployTxUrl = `${baseExplorerUrl}/tx/${deployHash}`
+  }
   console.log('Deploy URL: ', deployTxUrl)
 
   // Add the flattened source code to the sources object

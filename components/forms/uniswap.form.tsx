@@ -26,7 +26,7 @@
 // import { toAtomic, toReal } from '@/utils/units';
 // import Chip from '../Chip';
 // import Select from '../Select';
-// import { Input } from '@/app/components/ui/input';
+// import { Input } from '@/app/_components/ui/input';
 
 // type UniswapParams = Uniswap.CreateSwapPreOpParams;
 
@@ -274,7 +274,7 @@ import {
   Typography
 } from '@mui/material';
 import { JSBI } from '@uniswap/sdk';
-import { usePublicClient } from 'wagmi';
+import { useProvider } from 'wagmi';
 
 import { Uniswap as UniswapIcon } from '@/components/svg/uniswap';
 import { tokens } from '@/config/tokens';
@@ -296,7 +296,7 @@ export const UniswapForm: FC<UniswapFormProps> = ({ data, setData }) => {
   const [outputAmount, setOutputAmount] = useState<string>('0');
   const [uniswap, setUniswap] = useState<Uniswap>();
 
-  const provider = usePublicClient();
+  const provider = useProvider();
   const { smartAccountAddress } = useSmartAccount();
 
   useEffect(() => {
@@ -479,7 +479,7 @@ export const UniswapForm: FC<UniswapFormProps> = ({ data, setData }) => {
           width: '100%'
         }}
       >
-        {isEditing ? <Button style={{borderColor:"green",color:"green"}} onClick={handleSave}>Save</Button> : <Button style={{borderColor:"green",color:"green"}} onClick={handleEdit}>Edit</Button>}
+        {isEditing ? <Button style={{ borderColor: "green", color: "green" }} onClick={handleSave}>Save</Button> : <Button style={{ borderColor: "green", color: "green" }} onClick={handleEdit}>Edit</Button>}
       </ButtonGroup>
     </Box>
   );

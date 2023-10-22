@@ -1,17 +1,17 @@
 import { useState } from 'react';
 
-import { usePublicClient } from 'wagmi';
+import { useProvider } from 'wagmi';
 
 import { useSubscribeOnBlock } from './use-subscribe-on-block';
 
 import { ETHERSCAN_TX_URL } from '@/config/constants';
 // import { useAlert } from '@/providers/alert.provider';
-import { awaiter } from '@/utils/awaiter';
-import { findBundlerTransaction } from '@/utils/find-bunler-transaction';
+import { awaiter } from '../utils/awaiter';
+import { findBundlerTransaction } from '../utils/find-bunler-transaction';
 
 export const useSubscribeOperation = () => {
   const [loading, setLoading] = useState<boolean>(false);
-  const provider = usePublicClient();
+  const provider = useProvider();
   // const { callAlert } = useAlert();
   const { subscribe: sub } = useSubscribeOnBlock();
 

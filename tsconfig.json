@@ -79,8 +79,15 @@
     // "next-env.d.ts",
     // "**/*.ts",
     // "**/*.tsx",
+    // "**/**/*.ts",
+    // "**/**/*.tsx",
+    // "**/**/**/*.ts",
+    // "**/**/**/*.tsx",
     // ".next/types/**/*.ts",
     // ".next/types/**/*.ts",
+    // ".next/types/**/*.ts",
+    // ".next/types/**/*.ts"
+    // ".next/types/**/*.ts"
     // ".next/types/**/*.ts"
     ".next/types/**/*.ts"
   ],

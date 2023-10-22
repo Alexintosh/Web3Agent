@@ -16,13 +16,13 @@ import {
   TextField,
   Typography
 } from '@mui/material';
-import { useProvider, usePublicClient } from 'wagmi';
+import { useProvider } from 'wagmi';
 
 import { RelSubHeader } from './list-subheader';
 
 import { tokens } from '@/config/tokens';
-import { Trigger } from '@/core/support-operations/trigger';
-import { useSmartAccount } from '@/hooks/use-smart-account';
+import { Trigger } from '../../core/support-operations/trigger';
+import { useSmartAccount } from '../../hooks/use-smart-account';
 
 type TriggerParams = Trigger.CreateTriggerPreOpParams;
 
@@ -35,7 +35,7 @@ export const TriggerForm: FC<TriggerFormProps> = ({ data, setData }) => {
   const [innerData, setInnerData] = useState<TriggerParams>(data);
   const [isEditing, setIsEditing] = useState<boolean>(false);
 
-  const provider = usePublicClient();
+  const provider = useProvider();
   const { smartAccountAddress } = useSmartAccount();
 
   useEffect(() => {
@@ -167,7 +167,7 @@ export const TriggerForm: FC<TriggerFormProps> = ({ data, setData }) => {
           width: '100%'
         }}
       >
-        {isEditing ? <Button style={{borderColor:"green",color:"green"}} onClick={handleSave}>Save</Button> : <Button style={{borderColor:"green",color:"green"}} onClick={handleEdit}>Edit</Button>}
+        {isEditing ? <Button style={{ borderColor: "green", color: "green" }} onClick={handleSave}>Save</Button> : <Button style={{ borderColor: "green", color: "green" }} onClick={handleEdit}>Edit</Button>}
       </ButtonGroup>
     </Box>
   );
