@@ -23,7 +23,7 @@ const SideToggle = () => {
       <div
         style={{ borderTopRightRadius: "20px", borderBottomRightRadius: "20px" }}
         className={` ${open ? "w-72" : "w-20 "
-          } bg-gray-100 h-screen p-5  pt-8 relative duration-300 rounded-tr-md rounded-br-md `}
+          } bg-gray-100 h-screen p-5  pt-8 duration-300 rounded-tr-md rounded-br-md fixed `}
       >
         <img
           src="https://i.imgur.com/DVmX1OO.png"
