@@ -71,7 +71,7 @@ export function Homescreen() {
 
                   key={index}
                 // onClick={() => setInput(message.message)}
-                  style={{ margin: '7px', marginTop: '30px', height: '50px', textAlign: "left",width:"100%" }}
+                  style={{ margin: '7px', marginTop: '30px', height: '50px', textAlign: "left",width:"100%", paddingLeft:"8%", paddingRight:"8%" }}
 
                 >
                   <div style={{ display: "flex", flexDirection: "row", alignItems: "center", backgroundColor: "#F3F4F6", borderRadius: "10px", padding: "10px", boxShadow: "initial", borderStyle: "solid", border: "3px", borderColor: "black", justifyContent: "space-between" }} >
