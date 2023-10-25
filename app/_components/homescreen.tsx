@@ -6,22 +6,28 @@ import { IconArrowRight, IconArrowElbow } from '@/app/_components/ui/icons'
 import { IconCheck, IconEdit } from './ui/icons'
 import { ArrowRight } from '@mui/icons-material'
 import { useTableland } from '@/context/TablelandProvider'
+import Link from 'next/link'
 
 const exampleMessages = [
   {
     heading: 'Ask Agent',
     message: `Explore the web3 ecosystem and find the resources that you need.`,
     imgurl: 'https://i.imgur.com/2pHVHza.png',
+    slug:'/'
   },
   {
     heading: 'Send Transaction',
     message: 'Swap your tokens, bridge them across many chains, and much more.',
-    imgurl: 'https://i.imgur.com/XjBwspt.png'
+    imgurl: 'https://i.imgur.com/XjBwspt.png',
+        slug:'/defi-prompt'
+
   },
   {
     heading: 'Deploy Contracts',
     message: `Create your first smart contract via prompting.`,
-    imgurl: 'https://i.imgur.com/VT7UdPH.png'
+    imgurl: 'https://i.imgur.com/VT7UdPH.png',
+        slug:'/'
+
   }
 ]
 
@@ -58,33 +64,36 @@ export function Homescreen() {
 
           }}
         >
-          {exampleMessages.map((message, index) => (
-            <button
+          { exampleMessages.map( ( message, index ) => (
+            
+             <Link href={message?.slug} className='text-gray-600 w-full font-semibold'>
+                <button
 
-              key={index}
-              onClick={() => setInput(message.message)}
-              style={{ margin: '7px', marginTop: '30px', height: '50px', textAlign: "left", }}
+                  key={index}
+                // onClick={() => setInput(message.message)}
+                  style={{ margin: '7px', marginTop: '30px', height: '50px', textAlign: "left",width:"100%" }}
 
-            >
-              <div style={{ display: "flex", flexDirection: "row", alignItems: "center", backgroundColor: "#F3F4F6", borderRadius: "10px", padding: "10px", boxShadow: "initial", borderStyle: "solid", border: "3px", borderColor: "black", justifyContent: "space-between" }} >
-                <div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
-                  <div style={{ display: "flex", flexDirection: "row", marginLeft: "4px", marginRight: "10px", backgroundColor: "white", borderRadius: "10px", padding: "5px" }}>
-                    <img height={"40px"} width={"40px"} src={message.imgurl} alt="" />
+                >
+                  <div style={{ display: "flex", flexDirection: "row", alignItems: "center", backgroundColor: "#F3F4F6", borderRadius: "10px", padding: "10px", boxShadow: "initial", borderStyle: "solid", border: "3px", borderColor: "black", justifyContent: "space-between" }} >
+                    <div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
+                      <div style={{ display: "flex", flexDirection: "row", marginLeft: "4px", marginRight: "10px", backgroundColor: "white", borderRadius: "10px", padding: "5px" }}>
+                        <img height={"40px"} width={"40px"} src={message.imgurl} alt="" />
+                      </div>
+                      <div style={{ display: "flex", flexDirection: "column" }}>
+
+                        <span className=" text-md font-semibold">{message.heading}</span>
+                        <span className=" text-sm" > {message.message}</span>
+                      </div>
+
+                    </div>
+                    <div  >
+
+                      <ArrowRight></ArrowRight>
+                    </div>
                   </div>
-                  <div style={{ display: "flex", flexDirection: "column" }}>
 
-                    <span className=" text-md font-semibold">{message.heading}</span>
-                    <span className=" text-sm" > {message.message}</span>
-                  </div>
-
-                </div>
-                <div  >
-
-                  <ArrowRight></ArrowRight>
-                </div>
-              </div>
-
-            </button>
+                </button>
+              </Link>
           ))}
         </div>
       </div>
