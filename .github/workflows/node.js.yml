@@ -28,4 +28,4 @@ jobs:
     - run: cp ~/env/.env .env
     - run: npm run build --if-present
     - run: pm2 kill
-    - run: pm2 start npm --name web3agent -- start
+    - run: sudo pm2 start npm --name web3agent -- start
