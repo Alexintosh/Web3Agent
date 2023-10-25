@@ -51,6 +51,7 @@ import { TablelandProvider } from '@/context/TablelandProvider';
 
 const inter = Inter({ subsets: ['latin'] })
 
+
 // export const metadata = {
 //   title: 'Web3Agent',
 //   description: 'Web3 Agent AI',
@@ -80,18 +81,22 @@ export default function RootLayout({
 
 
 
-                    <div style={{ display: "flex", height: "screen" }}  >
+                    <div style={{ display: "flex", height: "screen", width:"auto" }}  >
                       <div className='z-50' >
                         <SideToggle />
                       </div>
-
-                      <div
-                        style={{ display: "flex", flexDirection: "row", justifyContent: "center" }}
-                        // className=' flex justify-center items-start p-6 min-h-screen'
-                        className='w-full'
+                      <div className="flex-1 p-7 ml-64"
+                      
                       >
-                        {children}
-                      </div>
+                       
+                            <div
+                              style={{ display: "flex", flexDirection: "row", justifyContent: "center" }}
+                              // className=' flex justify-center items-start p-6 min-h-screen'
+                              // className='w-full'
+                            >
+                                {children}
+                              </div>
+                        </div>
                     </div>
 
 

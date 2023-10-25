@@ -11,7 +11,7 @@ export default class Pleaseconnect extends Component<Props, State> {
 
   render() {
     return (
-    <div style={ { display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", fontSize: "15px" } }>
+    <div style={ { display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", fontSize: "15px", height:"100%" } }>
             <h1 style={{ marginBottom:"15px", fontSize:"20px", fontWeight:"initial", color:"GrayText"}} >You need to connect your wallet first!</h1>
             <ConnectButton></ConnectButton>
 
