@@ -1,12 +1,22 @@
-import React from "react";
-import { useState } from "react";
+// import React from "react";
+// import { useState } from "react";
+import React, { useState, useEffect } from 'react';
+
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { CopyAll, CopyAllRounded, CopyAllSharp, LockClockOutlined, LockClockRounded, Login, LoginRounded, Power, PowerOff, Search, SearchOffOutlined } from "@mui/icons-material";
 import Link from 'next/link'
+import { useRouter } from 'next/router';
+
 
 
 const SideToggle = () => {
-  const [open, setOpen] = useState(true);
+  const [ open, setOpen ] = useState( true );
+  const [ currentPath, setCurrentPath ] = useState( '/' );
+  
+  useEffect(() => {
+      setCurrentPath(window.location.pathname);
+  }, [] );
+  
   const Menus = [
     { title: "Home", src: "https://i.imgur.com/QMNAWX7.png", gap: true, slug: "/home" },
     { title: "Ask Agent", src: "https://i.imgur.com/2pHVHza.png", slug: "/" },
@@ -26,7 +36,7 @@ const SideToggle = () => {
          bg-gray-100 h-screen p-5  pt-8 duration-300 rounded-tr-md rounded-br-md fixed`}
       >
         <img
-          src="https://i.imgur.com/DVmX1OO.png"
+          src="https://i.imgur.com/0KJGLEI.png"
           className={`absolute z-50 cursor-pointer -right-3 top-9 w-7 border-dark-purple
            border-2 rounded-full  ${!open && "rotate-180"}`}
           onClick={() => setOpen(!open)}
@@ -50,10 +60,16 @@ const SideToggle = () => {
           <Link href={Menu?.slug} className='text-gray-600 font-semibold'>
 
               <li
+                
                 key={index}
                 className={`flex  rounded-md p-2 cursor-pointer hover:bg-gray-300 active:bg-gray-200 text-gray-700  text-sm font-semibold items-center gap-x-4 
-                ${Menu.gap ? "mt-9" : "mt-2"} ${index === 0 && "bg-light-white"
-                  } `}
+                ${Menu.gap ? "mt-9" : "mt-2"} ${index === 0 && "bg-light-white"}
+                  
+                   ${currentPath  === Menu?.slug ? 'bg-gray-300' : ''}
+                  `}
+                          onClick={() => setCurrentPath(Menu?.slug)}
+
+                // ${router.asPath === Menu?.slug ? 'bg-gray-200' : ''}
               >
                 <img height={"20px"} width={"20px"} src={Menu.src} />
 

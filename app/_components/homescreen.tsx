@@ -34,7 +34,7 @@ const exampleMessages = [
 export function Homescreen() {
   const { readTable, writeTable } = useTableland()
   return (
-    <div style={{ display: "flex", flexDirection: "column", justifyContent: "center" }} className="w-full px-4 h-full">
+    <div style={{ display: "flex", flexDirection: "column", justifyContent: "center",marginTop:"4rem" }} className="w-full px-4 h-full">
       <div className="rounded-lg border bg-background p-10 shadow-md">
         <h1 className="text-emerald-700 text-center text-4xl font-black">
           Unlock the power of web3
