@@ -24,7 +24,7 @@ export function EmptyScreen({ setInput }: Pick<UseChatHelpers, 'setInput'>) {
     <div className="mx-auto w-full px-4">
       <div className="rounded-lg border bg-background p-8 shadow-md">
         <h1 className=" text-emerald-700 text-center text-3xl font-black">
-          Your Web3 Agent [MAYUR]
+          Your Web3 Agent
         </h1>
 
         <p className="leading-normal text-sm text-muted-foreground text-center">
