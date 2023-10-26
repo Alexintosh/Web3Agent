@@ -12,9 +12,9 @@ const SideToggle = () => {
     { title: "Ask Agent", src: "https://i.imgur.com/2pHVHza.png", slug: "/" },
     { title: "Send Transacetion", src: "https://i.imgur.com/XjBwspt.png", slug: "/defi-prompt" },
     { title: "Deploy Contracts", src: "https://i.imgur.com/VT7UdPH.png", slug: "/defi-prompt" },
-    { title: "Defi", src: "https://i.imgur.com/XjBwspt.png", slug: "/defi-prompt" },
-    { title: "Manage History", src: "https://i.imgur.com/XjBwspt.png", slug: "/manage-history" },
-    { title: "View History", src: "https://i.imgur.com/XjBwspt.png", slug: "/history" },
+    { title: "Defi", src: "https://i.imgur.com/IYxIvAB.png", slug: "/defi-prompt" },
+    { title: "Manage History", src: "https://i.imgur.com/g0as0Mv.png", slug: "/manage-history" },
+    { title: "View History", src: "https://i.imgur.com/TW9s7qs.png", slug: "/history" },
 
   ];
 

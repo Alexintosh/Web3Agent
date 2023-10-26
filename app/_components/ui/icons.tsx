@@ -95,7 +95,7 @@ function IconOpenAI({ className, ...props }: React.ComponentProps<'svg'>) {
       viewBox="0 0 24 24"
       role="img"
       xmlns="http://www.w3.org/2000/svg"
-      className={cn('h-4 w-4', className)}
+      className={cn('h-4 w-4 text-white', className)}
       {...props}
     >
       <title>OpenAI icon</title>
