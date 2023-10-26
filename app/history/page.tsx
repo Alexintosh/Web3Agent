@@ -85,6 +85,7 @@ export default function History() {
     const tbody = () => {
         return (
             <>
+                   
                 {(history || []).map((_: any, index: number) => (
                     <TableRow>
                         <td className="whitespace-nowrap px-6 py-4">{index + 1}</td>
@@ -99,14 +100,21 @@ export default function History() {
                                 </a>
                             </button> : "NA"}</td>
                     </TableRow>
-                ))}
+                ) ) }
+                        
             </>
         );
     };
     return (
+        <div className="mx-auto w-full  px-4 content-center items-center">
+        <div className="rounded-lg border h-screen bg-background p-8  shadow-md">
         <div className=' h-screen w-full overflow-auto'>
             {/* <div onClick={() => { readTable() }}>Click to load</div> */}
-            <div className='text-2xl font-medium bg-gray-100 w-full text-center p-4 rounded-lg'>History</div>
+            <div className='text-2xl font-medium w-full text-center p-4 rounded-lg'>
+            <h1 className="text-emerald-700 text-center text-4xl font-black">
+                    History
+                </h1>
+            </div>
             {
                 !!(!isLoading && history && history?.length) && (
                     <div className='flex flex-col w-full justify-center items-center'>
@@ -127,6 +135,8 @@ export default function History() {
                 <Loader onClick={setIsLoading} showCloseIcon />
             )}
 
-        </div>
+                </div>
+            </div>
+            </div>
     )
 }

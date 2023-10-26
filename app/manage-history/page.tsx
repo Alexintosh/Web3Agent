@@ -189,10 +189,16 @@ export default function ManageHistory() {
     }
 
     return (
-        <div className="bg-white flex flex-col w-full h-screen overflow-auto ">
+        <div className="mx-auto w-full  px-4 content-center items-center">
+        <div className="rounded-lg border h-screen bg-background p-8  shadow-md">
+            <div className="bg-white flex flex-col w-full overflow-auto ">
 
-            <div className="text-2xl font-semibold text-gray-500 text-center py-2 sm:py-8 ">Manage Your History</div>
-            <div className="flex-1 flex justify-center bg-gray-50 ">
+            <div className="text-2xl font-semibold text-gray-500 text-center py-2 sm:py-8 ">
+                    <h1 className="text-emerald-700 text-center text-4xl font-black">
+                    Manage Your History
+                    </h1>
+            </div>
+            <div className="flex-1 flex justify-center ">
                 <div className="w-2/3 border-2 border-gray-200 rounded-md h-fit p-8 my-4">
                     <div className="flex  flex-col">
                         <div>Default History:  <span className="text-green-600 font-medium">Enabled</span></div>
@@ -227,6 +233,8 @@ export default function ManageHistory() {
             </div>
 
 
-        </div >
+            </div >
+            </div>
+            </div>
     )
 }
