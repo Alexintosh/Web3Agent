@@ -25,6 +25,4 @@ Deploy this contract on Scroll Sepolia Testnet
 [Scroll Sepolia Testnet Deployed Contract Link](https://sepolia.scrollscan.dev/tx/0x49d1b801acca8c5a118f43c6bbc3b5beabb07c78e348acedb3b398bbe6202222)
 
 
-[Scroll Sepolia Testnet Deployed Contract Link](https://sepolia.scrollscan.dev/tx/0x49d1b801acca8c5a118f43c6bbc3b5beabb07c78e348acedb3b398bbe6202222)
-
 [IPFS Link](https://nftstorage.link/ipfs/bafybeibcoutrhpnd2z342ocugzflk27bseqexek72afvgor6lozumkexge)

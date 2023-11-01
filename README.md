@@ -39,6 +39,7 @@ We have used Table to store CID of chat backup. Each user will have thier own ta
 - [Scroll Sepolia Testnet](https://github.com/Web3-Agent/Web3Agent/blob/feaa1f8e76eca83dd2f6a54aaf4647b2189aa92a/app/lib/chains.json#L126)
 - [Goerli](https://github.com/Web3-Agent/Web3Agent/blob/feaa1f8e76eca83dd2f6a54aaf4647b2189aa92a/app/lib/chains.json#L160)
 - [Filecoin - Calibration testnet](https://github.com/Web3-Agent/Web3Agent/blob/feaa1f8e76eca83dd2f6a54aaf4647b2189aa92a/app/lib/chains.json#L19524)
+- [Arbitrum Goerli](https://github.com/Web3-Agent/Web3Agent/blob/feaa1f8e76eca83dd2f6a54aaf4647b2189aa92a/app/lib/chains.json#L19852)
 
 
 ### Contract Deployment Commands
@@ -47,6 +48,7 @@ write a simple contract that stores a value.
 Deploy this contract on Scroll Sepolia Testnet
 Deploy this contract on  goerli
 Deploy this contract on Filecoin - Calibration testnet
+Deploy this contract on Arbitrum Goerli
 ```
 ### Other Commands
 ```
@@ -106,3 +108,15 @@ Deploy this contract on Filecoin - Calibration testnet
 [Ethereum Goerli Testnet Deployed Contract Link](https://goerli.etherscan.io/tx/0x4f1b481fe8f45d2c5b3d8d6b174b286eee6be9b1c39b37ea84c27dcca5c47e94)
 
 [IPFS Link](https://nftstorage.link/ipfs/bafybeifu7rjlzi74ugxo6te7bnpnhn2z3jzvgsb7gdqhrygzn2sc5u3ndm)
+
+#### Arbitrum Goerli Testnet
+
+###### 1. Command:
+  ![alt text](https://raw.githubusercontent.com/Web3-Agent/Web3Agent/main/screenshots/arbitrum/command.png)
+
+##### 2. Deployment:
+  ![alt text](https://raw.githubusercontent.com/Web3-Agent/Web3Agent/main/screenshots/arbitrum/deploy.png)
+
+[Arbitrum Goerli Testnet Deployed Contract Link](https://testnet.arbiscan.io/tx/0x15cdb54ffd13ad89da427dbef4d513c437000749f1970901ee83aa1e036c1006)
+
+[IPFS Link](https://nftstorage.link/ipfs/bafybeicpcmfxvpmpg2hfa4vspghtc2kdegvqp4ah3uvd7rot4v35dvkwl4)

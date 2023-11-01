@@ -23,6 +23,5 @@ Deploy this contract on Goerli.
 
 [Ethereum Goerli Testnet Deployed Contract Link](https://goerli.etherscan.io/tx/0x4f1b481fe8f45d2c5b3d8d6b174b286eee6be9b1c39b37ea84c27dcca5c47e94)
 
-[Ethereum Goerli Testnet Deployed Contract Link](https://goerli.etherscan.io/tx/0x4f1b481fe8f45d2c5b3d8d6b174b286eee6be9b1c39b37ea84c27dcca5c47e94)
 
 [IPFS Link](https://nftstorage.link/ipfs/bafybeifu7rjlzi74ugxo6te7bnpnhn2z3jzvgsb7gdqhrygzn2sc5u3ndm)

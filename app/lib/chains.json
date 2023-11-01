@@ -19868,7 +19868,7 @@
     "explorers": [
       {
         "name": "Arbitrum Goerli Rollup Explorer",
-        "url": "https://goerli-rollup-explorer.arbitrum.io",
+        "url": "https://testnet.arbiscan.io",
         "standard": "EIP3091"
       }
     ],
